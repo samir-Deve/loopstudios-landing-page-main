@@ -1,0 +1,34 @@
+$Josifin-font:"Josefin Sans", sans-serif;
+$Alta:"Alata", sans-serif;
+
+$global-font-size: 15px;
+
+$primary-White: hsl(0, 0%, 100%);
+$primary-Black: hsl(0, 0%, 0%);
+$primary-Dark-Gray: hsl(0, 0%, 55%);
+$primary-Very-Dark-Gray: hsl(0, 0%, 41%);
+
+@mixin rotate-first-line {
+	&:first-child {
+		transform: rotate(45deg);
+	}
+} 
+
+$breakpoints: (  
+  "phone": 37.5em,  
+  "tablet": 48em,  
+  "desktop": 90em,
+	"tab-desk": 60em
+);  
+
+@function respond-to-page-size($breakpoint) {  
+  @if map-has-key($breakpoints, $breakpoint) {  
+    @return map-get($breakpoints, $breakpoint);  
+  } @else {  
+    @error "No value is found for `#{$breakpoint}` in `#{$breakpoints}`";  
+  }  
+};
+
+@function get-clamped-value($min, $preferred, $max) {
+	@return max($min, min($preferred, $max));
+};
